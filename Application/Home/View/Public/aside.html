@@ -1,0 +1,56 @@
+  <aside>
+    <div class="rnav">
+    {foreach from=$subCate item='row' key='key'}
+      <li class="rnav{$key % 4 + 1} "><a href="index.php?p=Home&c=Article&a=index&cate_id={$row.cate_id}">{$row.cate_name}</a></li>
+    {/foreach}
+    </div>
+    <div class="ph_news">
+      <h2>
+        <p>点击排行</p>
+      </h2>
+      <ul class="ph_n">
+        {foreach from=$sortByHits item='row' name='n1'}
+          {if $smarty.foreach.n1.iteration <= 3}      
+        <li><span class="num{$smarty.foreach.n1.iteration}">{$smarty.foreach.n1.iteration}</span><a href="index.php?p=Home&c=Article&a=show&art_id={$row.art_id}">{$row.title}</a></li>
+          {else}
+          <li><span>{$smarty.foreach.n1.iteration}</span><a href="index.php?p=Home&c=Article&a=show&art_id={$row.art_id}">{$row.title}</a></li>
+          {/if}
+        {/foreach}
+      </ul>
+      <h2>
+        <p>栏目推荐</p>
+      </h2>
+      <ul>
+      {foreach from=$sortByRecommend item='row'}
+        <li><a href="index.php?p=Home&c=Article&a=show&art_id={$row.art_id}">{$row.title}</a></li>
+      {/foreach}
+      </ul>
+      <h2>
+        <p>最新评论</p>
+      </h2>
+      <ul class="pl_n">
+   
+        <dl>
+          <dt><img src="./Uploads/user/default.jpg"> </dt>
+          <dt> </dt>
+          <dd>DanceSmile
+            <time>49分钟前</time>
+          </dd>
+          <dd><a href="/">说得真好</a></dd>
+        </dl>
+      </ul>
+      <h2>
+        <p>最近访客</p>
+        <ul>
+          <img src="{$smarty.const.IMAGES_PATH}/vis.jpg">
+        </ul>
+      </h2>
+    </div>
+    <div class="copyright">
+      <ul>
+        <p> Design by <a href="/">DanceSmile</a></p>
+        <p>蜀ICP备11002373号-1</p>
+        </p>
+      </ul>
+    </div>
+  </aside>

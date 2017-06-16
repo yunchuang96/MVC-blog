@@ -1,0 +1,60 @@
+{include file='../Public/public.html'}
+<div class="admin">
+  <div class="tab">
+    <div class="tab-head"> <strong>分类管理</strong>
+      <ul class="tab-nav">
+        <li class="active"><a href="#tab-set">添加分类</a></li>
+      </ul>
+    </div>
+    <div class="tab-body"> <br />
+      <div class="tab-panel active" id="tab-set">
+        <form method="post" class="form-x" action="index.php?p=Back&c=Category&a=dealEdit">
+          <div class="form-group">
+            <div class="label">
+              <label for="sitename">分类名称</label>
+            </div>
+            <div class="field">
+              <input type="text" class="input" id="name" name="cate_name" size="50" placeholder="分类名称" data-validate="required:请填写您的分类名称" value="{$cate_row.cate_name}"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="label">
+              <label for="sitename">所属类别</label>
+            </div>
+            <div class="field">
+              <select class="select" name="cate_pid" >
+                  <option value="0" {if $cate_row.cate_pid ==0 || $cate_b.b=="disabled"}disabled{/if}
+                   {if $cate_row.cate_pid ==0 }selected="selected"{/if}>总类</option>
+                  {foreach from=$cate_list item='row'}
+                  <option value="{$row.cate_id}"{if $cate_row.cate_pid==$row.cate_id } selected="selected"{/if} {if $cate_row.cate_pid !==$row.cate_id } {$cate_b.b}{/if} {if $cate_row.cate_id ==$row.cate_id }disabled{/if}>{$row.cate_name|indent:(3*$row.level):'-'}</option>
+                  {/foreach}
+              <!--     && $cate_row.cate_pid ==0 -->
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="label">
+              <label for="readme">分类描述</label>
+            </div>
+            <div class="field">
+              <textarea name="cate_desc" class="input" rows="5" cols="50" placeholder="请填写分类描述" data-validate="required:请填写分类描述">{$cate_row.cate_desc}</textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="label">
+              <label for="siteurl">排序</label>
+            </div>
+            <div class="field">
+              <input type="text" class="input" id="sort" name="cate_sort" size="50" placeholder="请填写排序编号" data-validate="required:请填写排序编号" value="{$cate_row.cate_sort}" />
+            </div>
+          </div>
+          <div class="form-button">
+            <input type="hidden" name="cate_id" value="{$cate_row.cate_id} ">
+            <button class="button bg-main" type="submit">提交</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

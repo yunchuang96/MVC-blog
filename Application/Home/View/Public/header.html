@@ -1,0 +1,9 @@
+ <header>
+    <h1>云窗个人博客</h1>
+    <h2>你的眼界决定你的世界</h2>
+    <div class="logo"><a href="index.php?p=Home"></a></div>      
+    <nav id="topnav"><a href="index.php?p=Home">首页</a>
+    {foreach from=$first_cate item='row'}
+    <a href="index.php?p=Home&c=Article&a=index&cate_id={$row.cate_id}">{$row.cate_name}</a>{/foreach}
+    <a href="index.php?p=Home&c=SinglePage&a=index&page_id=2">关于我</a></nav>
+  </header>
